@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Box, Heading, Button, Input, FormControl, FormLabel, VStack, Radio, RadioGroup, Stack } from '@chakra-ui/react';
 import { useAuth } from '../context/AuthContext';
-import { createKeyStore, loginKeyStore } from '../services/api'; // Assuming you have a useKeyStore function
-import { greenToast, redToast } from '../utils/helpers';
+import { createKeyStore, loginKeyStore } from '../services/api'; 
+import { redToast } from '../utils/helpers';
 import { useToast } from '@chakra-ui/react';
 
 function Home() {
     const { setToken } = useAuth();
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
-    const [action, setAction] = useState('create'); // New state variable for the action
+    const [action, setAction] = useState('create'); 
     const toast = useToast();
 
     const handleLogin = () => {
@@ -21,7 +21,7 @@ function Home() {
             }
             );
         } else {
-            loginKeyStore(password, name).then((token) => { // Use the keystore if the selected action is 'use'
+            loginKeyStore(password, name).then((token) => { 
                 setToken(password, name);
             }).catch((error) => {
                 redToast(toast, "Invalid password or name.");
@@ -58,7 +58,7 @@ function Home() {
                     />
                 </FormControl>
                 <Button colorScheme="teal" size="lg" onClick={handleLogin}>
-                    Log In
+                    {action === 'create' ? "Sign Up" : "Log In"}
                 </Button>
             </VStack>
         </Box>
