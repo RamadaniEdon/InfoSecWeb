@@ -236,25 +236,31 @@ export async function getFilteredAliases(password, filter, keystoreName) {
     });
 }
 
-// export async function getPublicKeys() {
-//     return sendRequest(BACKEND_URL + `public-keys`, {});
-// }
-
 export async function getPublicKeys() {
-    const url = BACKEND_URL + "public-keys";
-
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+    return sendRequest(BACKEND_URL + `public-keys`, {
+        headers: {
+            'ngrok-skip-browser-warning': 'true'
         }
-        const publicKeys = await response.json();
-        return publicKeys;
-    } catch (error) {
-        console.error('Failed to fetch public keys:', error);
-        return []; // Return an empty array in case of an error
-    }
+    });
 }
+
+// export async function getPublicKeys() {
+//     const url = BACKEND_URL + "public-keys";
+
+//     try {
+//         const response = await fetch(url);
+//         console.log(response)
+//         if (!response.ok) {
+//             throw new Error(`HTTP error! status: ${response.status}`);
+//         }
+//         const text = await response.text();
+//         const publicKeys = JSON.parse(text);
+//         return publicKeys;
+//     } catch (error) {
+//         console.error('Failed to fetch public keys:', error);
+//         return []; // Return an empty array in case of an error
+//     }
+// }
 
 // // Example usage:
 // fetchPublicKeys().then(publicKeys => {
