@@ -1,4 +1,4 @@
-const BACKEND_URL = "https://fb4d-2a02-586-4915-e314-afe0-abf5-a9ff-b8d7.ngrok-free.app/api/crypto/";
+const BACKEND_URL = "https://7003-2a02-586-4915-e314-2aad-dceb-7a34-a6a6.ngrok-free.app/api/crypto/";
 
 // returns a Promise
 function transformToJsonOrTextPromise(response) {
